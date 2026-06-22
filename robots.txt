@@ -1,0 +1,8 @@
+﻿User-agent: *
+Allow: /
+
+Disallow: /temp/
+Disallow: /admin/
+
+Sitemap: https://xuanfengshanghang1.github.io/didi/sitemap.xml
+
