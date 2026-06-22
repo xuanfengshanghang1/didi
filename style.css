@@ -266,6 +266,7 @@ h3 { font-size: 23px; }
   margin-bottom: 48px;
 }
 .join-steps p, .value-card p, .proof-card span { color: var(--muted); }
+.proof-card span { display: block; font-size: 15px; line-height: 1.7; }
 .value {
   border-top: 1px solid rgba(255,255,255,.08);
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -282,7 +283,7 @@ h3 { font-size: 23px; }
   gap: 16px;
   align-items: stretch;
 }
-.proof-card { padding: 28px; min-height: 168px; }
+.proof-card { padding: 28px; min-height: 188px; }
 .main-proof { grid-row: span 1; }
 .proof-card strong {
   display: block;
@@ -494,6 +495,43 @@ h3 { font-size: 23px; }
   margin-bottom: 12px;
 }
 .article-tile small, .article-row p { color: var(--muted); }
+.guide-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -6px 0 22px;
+}
+.guide-filters a,
+.pagination span,
+.pagination a {
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 220, 131, .28);
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  color: #f7ead0;
+  background: rgba(255, 255, 255, .045);
+  font-weight: 800;
+  font-size: 14px;
+}
+.guide-filters a:first-child,
+.page-current {
+  color: #171008;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+}
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 22px;
+}
+.pagination .page-note {
+  color: var(--muted);
+  font-weight: 500;
+  background: transparent;
+}
 .guide-hero { min-height: 640px; }
 .article-list { display: grid; gap: 16px; }
 .article-row { display: block; padding: 26px; }
