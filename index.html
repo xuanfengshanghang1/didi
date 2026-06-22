@@ -33,15 +33,25 @@
         <a href="#support">商行能做什么</a>
         <a href="guide/index.html">攻略中心</a>
         <a href="#trust">保障说明</a>
-        <a href="#contact" class="nav-action">领取新手路线</a>
+        <a href="#contact" class="nav-action qr-trigger">领取新手路线</a>
       </div>
     </nav>
   </header>
 
-  <a class="float-cta" href="#contact">
-    <strong>领取攻略</strong>
-    <span>客服对接</span>
-  </a>
+  <div class="float-cta" aria-label="快捷联系入口">
+    <button class="float-link float-wechat qr-trigger" type="button">
+      <strong>微信</strong>
+      <span>扫码领取</span>
+    </button>
+    <a class="float-link" href="tencent://message/?uin=370835291&Site=&Menu=yes" aria-label="QQ咨询 370835291">
+      <strong>QQ</strong>
+      <span>370835291</span>
+    </a>
+    <a class="float-link" href="guide/index.html">
+      <strong>攻略入口</strong>
+      <span>先看文章</span>
+    </a>
+  </div>
 
   <main id="top">
     <section class="hero recruit-hero">
@@ -52,7 +62,7 @@
         <h1>打到装备和材料，不用自己到处找买家</h1>
         <p class="hero-copy">炫锋商行为传奇手游散人玩家提供新手攻略、交流群带路、装备材料回收和客服对接。你负责按路线打资源，商行负责告诉你哪些有价值、怎么交付、怎么少走弯路。</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn primary">领取新手打金路线</a>
+          <a href="#contact" class="btn primary qr-trigger">领取新手打金路线</a>
           <a href="guide/index.html" class="btn ghost">先看攻略文章</a>
         </div>
         <div class="player-hooks" aria-label="散人玩家关注点">
@@ -140,7 +150,7 @@
         <p class="eyebrow dark">WHY JOIN XUANFENG</p>
         <h2>你不是缺努力，是缺路线、回收和有人带</h2>
         <p>散人玩家最怕三件事：自己进游戏摸不明白，打到东西不知道有没有价值，出了货还要到处找买家。商行存在的价值，就是把这些不确定性尽量前置讲清楚。</p>
-        <a href="#contact" class="btn primary">我想先了解一下</a>
+        <a href="#contact" class="btn primary qr-trigger">我想先了解一下</a>
       </div>
       <div class="value-grid">
         <div class="value-card">
@@ -211,11 +221,11 @@
       <div class="contact-inner">
         <p class="eyebrow">JOIN NOW</p>
         <h2>想先试着了解？先领一份新手路线</h2>
-        <p>添加客服后说明“想了解散人打金”，客服会根据你的设备、时间和基础情况，发对应的起号路线和交流群入口。</p>
+        <p>添加企业微信后说明“想了解散人打金”，客服会根据你的设备、时间和基础情况，发对应的起号路线和交流群入口。</p>
         <div class="contact-boxes">
           <div>
-            <span>关注微信公众号</span>
-            <strong>炫锋游戏搬砖</strong>
+            <span>企业微信客服</span>
+            <strong>扫码领取路线</strong>
           </div>
           <div>
             <span>QQ咨询</span>
@@ -227,12 +237,25 @@
           </div>
         </div>
         <div class="contact-actions">
-          <a href="#" class="btn primary">关注公众号</a>
+          <a href="#" class="btn primary qr-trigger">添加企业微信</a>
           <a href="guide/index.html" class="btn ghost light">先看攻略中心</a>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="qr-modal" id="qrModal" aria-hidden="true">
+    <div class="qr-card" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+      <button class="qr-close" type="button" aria-label="关闭二维码">×</button>
+      <p class="eyebrow dark">ENTERPRISE WECHAT</p>
+      <h2 id="qrTitle">添加企业微信客服</h2>
+      <p>扫码后备注“散人打金”，领取新手打金路线和交流群入口。</p>
+      <div class="qr-image-wrap">
+        <img src="assets/qrcode-enterprise-wechat.jpg" alt="炫锋商行企业微信二维码">
+      </div>
+      <small>电脑端移到按钮上可查看二维码，手机端点击按钮即可打开。</small>
+    </div>
+  </div>
 
   <footer class="footer">
     <div>
@@ -241,6 +264,65 @@
     </div>
     <p>提示：请理性判断时间成本和游戏规则，不承诺固定结果。</p>
   </footer>
+  <script>
+    (function () {
+      var modal = document.getElementById('qrModal');
+      if (!modal) return;
+      var triggers = document.querySelectorAll('.qr-trigger');
+      var card = modal.querySelector('.qr-card');
+      var closeBtn = modal.querySelector('.qr-close');
+      var hideTimer = null;
+
+      function isDesktop() {
+        return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      }
+
+      function showQr(event) {
+        if (event) event.preventDefault();
+        clearTimeout(hideTimer);
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function hideQr() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      function scheduleHide() {
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+          if (!card || !card.matches(':hover')) hideQr();
+        }, 140);
+      }
+
+      triggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function (event) {
+          showQr(event);
+        });
+        trigger.addEventListener('mouseenter', function (event) {
+          if (isDesktop()) showQr(event);
+        });
+        trigger.addEventListener('mouseleave', function () {
+          if (isDesktop()) scheduleHide();
+        });
+      });
+
+      card.addEventListener('mouseenter', function () {
+        clearTimeout(hideTimer);
+      });
+      card.addEventListener('mouseleave', function () {
+        if (isDesktop()) scheduleHide();
+      });
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) hideQr();
+      });
+      closeBtn.addEventListener('click', hideQr);
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') hideQr();
+      });
+    })();
+  </script>
 </body>
 </html>
 
