@@ -606,59 +606,172 @@ h3 { font-size: 23px; }
 }
 
 @media (max-width: 640px) {
-  body { padding-bottom: 78px; }
-  h1 { max-width: 100%; font-size: 34px; line-height: 1.18; }
-  h2 { font-size: 31px; line-height: 1.18; }
-  .site-header { background: rgba(4, 8, 15, .88); }
-  .nav {
-    width: calc(100% - 28px);
-    min-height: auto;
-    gap: 10px;
-    padding: 12px 0 10px;
+  body { padding-bottom: 0; }
+  h1 { max-width: 100%; font-size: 31px; line-height: 1.14; letter-spacing: 0; }
+  h2 { font-size: 28px; line-height: 1.16; }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(4, 8, 15, .94);
   }
+  .nav {
+    width: calc(100% - 20px);
+    min-height: auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 10px;
+    padding: 10px 0 10px;
+    align-items: start;
+  }
+  .brand { gap: 10px; }
   .brand-mark { width: 40px; height: 40px; }
   .brand strong { font-size: 17px; }
   .brand small { font-size: 10px; letter-spacing: 1px; }
   .nav-links {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
     width: 100%;
-    gap: 12px;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 2px;
-    scrollbar-width: none;
+    overflow: visible;
+    padding-bottom: 0;
+    align-items: stretch;
   }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a { flex: 0 0 auto; }
-  .nav-action { padding: 7px 12px; }
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 6px 7px;
+    font-size: 11px;
+    line-height: 1.1;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 220, 131, .22);
+    background: rgba(255, 255, 255, .05);
+    color: #dce5f4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .nav-links a[href="#join"],
+  .nav-links a[href="#support"],
+  .nav-links a[href="#trust"],
+  .nav-links a[href="../index.html#join"],
+  .nav-links a[href="../index.html#support"],
+  .nav-links a[href="../index.html#trust"] { display: none; }
+  .nav-action {
+    grid-column: 1 / -1;
+    min-height: 40px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+  }
   .hero {
-    min-height: 720px;
+    min-height: 0;
+    padding: 12px 0 18px;
     align-items: flex-start;
   }
+  .hero-bg { object-position: center 18%; }
   .hero-shade {
     background:
-      linear-gradient(90deg, rgba(2, 5, 11, .96) 0%, rgba(2, 5, 11, .82) 58%, rgba(2, 5, 11, .42) 100%),
-      linear-gradient(180deg, rgba(5, 9, 18, .12) 0%, rgba(5, 9, 18, .96) 92%);
+      linear-gradient(180deg, rgba(5, 9, 18, .14) 0%, rgba(5, 9, 18, .88) 52%, rgba(5, 9, 18, .96) 100%),
+      linear-gradient(90deg, rgba(2, 5, 11, .82) 0%, rgba(2, 5, 11, .56) 100%);
   }
   .hero-content {
-    width: calc(100% - 28px);
-    padding-top: 142px;
+    width: calc(100% - 20px);
+    padding: 16px 16px 18px;
+    margin-top: 12px;
+    border: 1px solid rgba(255, 220, 131, .16);
+    border-radius: 16px;
+    background: rgba(5, 9, 18, .58);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, .28);
   }
-  .eyebrow { font-size: 11px; letter-spacing: 1.4px; margin-bottom: 10px; }
-  .hero-copy { max-width: 100%; font-size: 16px; line-height: 1.75; }
-  .hero-actions { gap: 10px; margin-top: 22px; }
-  .hero-actions .btn { flex: 1 1 150px; min-height: 46px; padding: 0 14px; }
-  .player-hooks {
-    margin-top: 28px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
   }
-  .player-hooks div { padding: 14px; border-bottom: 1px solid rgba(255, 220, 131, .16); }
-  .player-hooks strong { font-size: 18px; }
-  .player-hooks span { font-size: 12px; }
-  .section { width: calc(100% - 28px); padding: 64px 0; }
-  .content-entry-head { margin-bottom: 18px; }
-  .article-tile, .article-row, .value-card, .proof-card, .join-steps article { padding: 22px; }
-  .contact { width: calc(100% - 28px); margin-bottom: 64px; }
-  .contact-inner { padding: 24px; }
-  .float-cta { width: calc(100% - 16px); right: 8px; bottom: 8px; gap: 4px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .float-link { min-height: 46px; padding: 7px 4px; text-align: center; }
+  .hero-copy {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.68;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+  .player-hooks { display: none; }
+  .section {
+    width: calc(100% - 20px);
+    padding: 44px 0;
+  }
+  .content-entry-head {
+    display: block;
+    margin-bottom: 16px;
+  }
+  .content-entry-head .btn.primary {
+    width: 100%;
+    margin-top: 14px;
+  }
+  .article-strip {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .article-tile, .article-row, .value-card, .proof-card, .join-steps article {
+    padding: 18px;
+    min-height: auto;
+  }
+  .article-tile strong, .article-row strong { font-size: 18px; }
+  .section-head.center { margin-bottom: 28px; }
+  .join-steps { gap: 12px; }
+  .join-steps article::after { inset: auto -34% -52% auto; width: 140px; height: 140px; }
+  .join-steps span { font-size: 28px; margin-bottom: 18px; }
+  .value-grid, .proof, .urgent, .value, .trust, .guide-link, .faq-grid, .article-layout {
+    grid-template-columns: 1fr;
+  }
+  .proof-card span { font-size: 14px; line-height: 1.55; }
+  .guide-card { padding: 18px; min-height: auto; }
+  .contact {
+    width: calc(100% - 20px);
+    margin-bottom: 44px;
+    border-radius: 14px;
+  }
+  .contact-inner { padding: 20px; }
+  .contact-boxes {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .contact-boxes div { padding: 14px; }
+  .contact-boxes strong { font-size: 18px; }
+  .contact-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .contact-actions .btn { width: 100%; }
+  .footer {
+    width: calc(100% - 20px);
+    padding: 22px 0 30px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .float-cta { display: none; }
+  .toc { padding: 16px; }
+  .article { padding: 20px; }
 }
