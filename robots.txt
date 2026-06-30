@@ -1,8 +1,31 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
-
 Disallow: /temp/
 Disallow: /admin/
 
-Sitemap: https://xuanfengshanghang1.github.io/didi/sitemap.xml
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /temp/
+Disallow: /admin/
 
+User-agent: GPTBot
+Allow: /
+Disallow: /temp/
+Disallow: /admin/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /temp/
+Disallow: /admin/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /temp/
+Disallow: /admin/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /temp/
+Disallow: /admin/
+
+Sitemap: https://www.xuanfengshanghang.com/sitemap.xml
